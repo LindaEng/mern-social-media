@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import authReducer from "./state"
-import { configureStore } from "@reduxjs/toolkit"
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit"
 import { Provider } from "react-redux"
 import {
   persistStore,
@@ -21,14 +21,13 @@ import { PersistGate } from "redux-persist/integration/react"
 const persistConfig = { key: "root", storage, version: 1}
 const persistedReducer = persistReducer(persistConfig, authReducer)
 
+const customizedMiddleware = getDefaultMiddleware({
+  serializableCheck: false
+})
+
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) => 
-    getDefaultMiddleware({
-      serializeableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-      }
-    })
+  middleware: customizedMiddleware
 })
 
 
