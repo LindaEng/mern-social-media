@@ -77,9 +77,16 @@ export const Navbar = () => {
             <LightMode sx={{ color: dark, fontSize: "25px"}}/>
           )}
         </IconButton>
-        <Message sx={{ fontSize: "25px"}} />
-        <Notifications sx={{ fontSize: "25px" }} />
-        <Help sx={{ fontSize: " 25px "}} />
+        <Box sx={{margin: "1.5rem 0"}}>
+            <Message sx={{ fontSize: "25px"}} />
+        </Box>
+        <Box sx={{margin: "1.5rem 0"}}>
+            <Notifications sx={{ fontSize: "25px" }} />
+        </Box>
+        <Box sx={{margin: "1.5rem 0"}}>
+            <Help sx={{ fontSize: " 25px "}} />
+        </Box>
+        <Box sx={{margin: "1rem 0"}}>
         <FormControl variant="standard" value={{fullName}}>
           <Select
             value={fullName}
@@ -106,6 +113,7 @@ export const Navbar = () => {
             </MenuItem>
           </Select>
         </FormControl>
+        </Box>  
       </FlexBetween>) : (
       <IconButton 
         onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}
@@ -114,6 +122,7 @@ export const Navbar = () => {
       </IconButton>)}
 
       {/* Mobile */}
+
       {!isNonMobileScreens && isMobileMenuToggled && (
         <Box
           position="fixed"
@@ -144,9 +153,15 @@ export const Navbar = () => {
               <LightMode sx={{ color: dark, fontSize: "25px"}}/>
             )}
           </IconButton>
-          <Message sx={{ fontSize: "25px"}} />
-          <Notifications sx={{ fontSize: "25px" }} />
-          <Help sx={{ fontSize: " 25px "}} />
+          <Box sx={{margin: "0 2rem"}}>
+            <Message sx={{ fontSize: "25px"}} />
+          </Box>
+          <Box sx={{margin: "0 1rem"}}>
+            <Notifications sx={{ fontSize: "25px" }} />
+          </Box>
+          <Box sx={{margin: "0 1rem"}}>
+            <Help sx={{ fontSize: " 25px "}} />
+          </Box>
           <FormControl variant="standard" value={{fullName}}>
             <Select
               value={fullName}
