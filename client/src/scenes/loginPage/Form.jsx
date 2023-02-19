@@ -48,6 +48,8 @@ const initialValuesLogin = {
     password: ""
 }
 
+const handleFormSubmit = async (values, onSubmitProps) => {}
+
 const Form = () => {
     const [pageType, setPageType] = useState("login")
     const { palette } = useTheme()
@@ -58,7 +60,26 @@ const Form = () => {
     const isRegister = pageType === "register"
 
   return (
-    <div>Form</div>
+    <Formik
+        onSubmit={handleFormSubmit}
+        initialValues={isLogin ? initialValuesLogin : initialValuesRegister}
+        validationSchema={isLogin ? loginSchema : registerSchema}
+    >
+        {({
+            values,
+            errors,
+            touched,
+            handleBlur,
+            handleChange,
+            handleSubmit,
+            setFieldValue,
+            resetForm
+        }) => {
+            <form onSubmit={handleSubmit}>
+                
+            </form>
+        }}
+    </Formik>
   )
 }
 
